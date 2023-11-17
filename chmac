@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sudo macchanger -r enp1s0
+sleep 7s
+ip=`ip addr | grep enp1s0 | grep inet | awk '{print $2}' | cut -d/ -f1`
+pip=`curl "ipecho.net/plain"`
+sleep 1s
+curl "http://158.247.201.46/api/updatevpn.php?ip=$ip&name=$1"
